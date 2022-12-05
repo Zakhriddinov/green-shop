@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
-const FriendlyWebpackErrors = require("friendly-errors-webpack-plugin");
+// const FriendlyWebpackErrors = require("friendly-errors-webpack-plugin");
 const SimpleWebpackProgress = require("simple-progress-webpack-plugin");
 const CircularWebpackDependencies = require("circular-dependency-plugin");
 const StylelintWebpackPlugin = require("stylelint-webpack-plugin");
@@ -99,7 +99,7 @@ const plugins = [
          removeEmptyAttributes: true
       }
    }),
-   new FriendlyWebpackErrors(),
+   // new FriendlyWebpackErrors(),
    new SimpleWebpackProgress(),
    new CircularWebpackDependencies({
       exclude: /node_modules/,
