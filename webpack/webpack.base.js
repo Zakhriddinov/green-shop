@@ -67,7 +67,7 @@ const rules = [
 ]
 
 const resolve = {
-   extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.wasm'],
+   extensions: ['.js', '.jsx', '.json', '.wasm'],
    alias: {
       '@assets': path.resolve(__dirname, '../src/assets')
    }
