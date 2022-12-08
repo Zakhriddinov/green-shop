@@ -1,12 +1,12 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
-// const FriendlyWebpackErrors = require("friendly-errors-webpack-plugin");
+const FriendlyWebpackErrors = require("friendly-errors-webpack-plugin");
 const SimpleWebpackProgress = require("simple-progress-webpack-plugin");
 const CircularWebpackDependencies = require("circular-dependency-plugin");
 const StylelintWebpackPlugin = require("stylelint-webpack-plugin");
 
-const entry = ['./src/index.tsx']
+const entry = ['./src/index.js']
 
 const output = {
    publicPath: '/',
@@ -22,20 +22,6 @@ const rules = [
       use: 'babel-loader',
 
       exclude: /node_modules/
-   },
-   {
-      test: /.(ts|tsx)x?$/,
-      exclude: /node_modules/,
-      use: {
-         loader: 'babel-loader',
-         options: {
-            presets: [
-               "@babel/preset-env",
-               "@babel/preset-react",
-               "@babel/preset-typescript",
-            ]
-         }
-      }
    },
    {
       test: /\.(woff|woff2|otf|ttf)$/,
@@ -99,7 +85,7 @@ const plugins = [
          removeEmptyAttributes: true
       }
    }),
-   // new FriendlyWebpackErrors(),
+   new FriendlyWebpackErrors(),
    new SimpleWebpackProgress(),
    new CircularWebpackDependencies({
       exclude: /node_modules/,
