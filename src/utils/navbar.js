@@ -1,9 +1,10 @@
 import React from 'react';
 import useId from '../hooks/useId';
+import Generic from '../pages/Generic';
 
 const HomePage = React.lazy(() => import("../pages/Home"));
 
-const route = [
+const navbar = [
    {
       id: useId,
       path: "/",
@@ -12,8 +13,17 @@ const route = [
             <HomePage />
          </React.Suspense>
       ),
+      title: "Home",
+      private: false,
+      hidden: false
+   },
+   {
+      id: useId,
+      path: "/products",
+      element: <Generic />,
+      title: 'Products',
       private: false,
       hidden: false
    }
 ]
-export default route;
+export default navbar;

@@ -3,3 +3,29 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  /* color */
+  --colorGreen: #46a358;
+  --colorBlack: #3d3d3d;
+
+  --padding: 0 120px;
+}
+
+/* Font family */
+@font-face {
+  font-family: "CeraPro-Bold";
+  src: url("./assets/fonts/Cera\ Pro\ Bold.ttf");
+}
+@font-face {
+  font-family: "CeraPro-Medium";
+  src: url("./assets/fonts/Cera\ Pro\ Medium.ttf");
+}
+@font-face {
+  font-family: "CeraPro-Regular";
+  src: url("./assets/fonts/cera-pro-regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "CeraPro-Black";
+  src: url("./assets/fonts/Cera\ Pro\ Black.ttf");
+}

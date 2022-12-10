@@ -24,8 +24,7 @@ const rules = [
       exclude: /node_modules/
    },
    {
-      test: /\.(woff|woff2|otf|ttf)$/,
-
+      test: /\.(woff|woff2)$/,
       use: {
          loader: 'file-loader',
          options: {
@@ -34,7 +33,7 @@ const rules = [
       }
    },
    {
-      test: /\.(svg|jpg|jpeg|png|gif)$/,
+      test: /\.(svg|jpg|jpeg|png|gif)$/i,
 
       use: [
          {
