@@ -125,6 +125,7 @@ const config = {
    },
    devServer: {
       historyApiFallback: true,
+      hot:true,
    },
 }
 module.exports = {

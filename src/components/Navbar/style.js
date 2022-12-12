@@ -8,8 +8,6 @@ import User from '../../assets/icons/user.svg';
 const Container = styled.nav`
 display: flex;
 flex-direction: column;
-
-
 `
 const Main = styled.div`
 display: flex;

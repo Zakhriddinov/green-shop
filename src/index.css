@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   overflow-x: hidden;
 }
 :root {
@@ -30,4 +30,20 @@ body{
 @font-face {
   font-family: "CeraPro-Black";
   src: url("./assets/fonts/Cera\ Pro\ Black.ttf");
+}
+
+/* scroll style */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #46a358;
 }
