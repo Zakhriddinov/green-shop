@@ -120,7 +120,8 @@ const plugins = [
          '/templates/index2.html': {
             'X-Frame-Options': 'SAMEORIGIN'
          }
-      }
+      },
+
    })
 ]
 
@@ -137,7 +138,9 @@ const config = {
    },
    devServer: {
       historyApiFallback: true,
-      contentBase: '../build',
+      static: {
+         directory: path.resolve(__dirname, "../build")
+      },
       hot: true,
    },
 }
