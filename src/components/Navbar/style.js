@@ -114,6 +114,7 @@ display: none;
 @media screen and (max-width:768px){
   position: fixed;
   bottom: 0;
+  z-index: 22;
   height: 60px;
   width: 100%;
   background-color: #fff;

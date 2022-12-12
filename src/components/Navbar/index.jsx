@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import {
   Container,
@@ -20,16 +19,7 @@ import { Button } from "../Generic";
 import { Dropdown } from "antd";
 
 const Navbar = () => {
-  const [stickyClass, setStickyClass] = useState("");
   const navigate = useNavigate();
-
-  function stickyNavbar() {
-    let windowHeight = window.scrollY;
-    setStickyClass("sticky-nav") ? windowHeight > 500 : setStickyClass("");
-  }
-  useEffect(() => {
-    window.addEventListener("scroll", stickyNavbar);
-  }, []);
   const menu = (
     <Menu>
       <Menu.Item data-name="myprofile">My Profile</Menu.Item>
@@ -40,7 +30,7 @@ const Navbar = () => {
   return (
     <Container>
       <Main>
-        <Wrapper className={`${stickyClass}`}>
+        <Wrapper>
           <Section onClick={() => navigate("/")} logo>
             <img src={logo} alt="logo" />
           </Section>

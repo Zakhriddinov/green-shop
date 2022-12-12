@@ -5,7 +5,6 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const SimpleWebpackProgress = require("simple-progress-webpack-plugin");
 const CircularWebpackDependencies = require("circular-dependency-plugin");
 const StylelintWebpackPlugin = require("stylelint-webpack-plugin");
-const { NetlifyPlugin } = require('netlify-webpack-plugin');
 
 const entry = ['./src/index.js']
 
@@ -110,18 +109,6 @@ const plugins = [
    new ESLintPlugin(),
    new StylelintWebpackPlugin({
       files: '**/*.js'
-   }),
-   new NetlifyPlugin({
-      headers: {
-         '/templates/index.html': {
-            'X-Frame-Options': 'DENY',
-            'X-XSS-Protection': [1, { mode: 'block' }]
-         },
-         '/templates/index2.html': {
-            'X-Frame-Options': 'SAMEORIGIN'
-         }
-      },
-
    })
 ]
 

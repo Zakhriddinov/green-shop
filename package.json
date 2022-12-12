@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --config ./webpack/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack build --config ./webpack/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.js",
     "serve": "cross-env NODE_ENV=development webpack serve --config ./webpack/webpack.server.js",
     "lint:css": "stylelint --fix './src/**/*.{js|jsx}'",
     "lint:js": "eslint --fix './src/**/*.{js|jsx}'"
