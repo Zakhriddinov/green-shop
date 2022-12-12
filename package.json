@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --config ./webpack/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack build --config ./webpack/webpack.prod.js",
     "serve": "cross-env NODE_ENV=development webpack serve --config ./webpack/webpack.server.js",
     "lint:css": "stylelint --fix './src/**/*.{js|jsx}'",
     "lint:js": "eslint --fix './src/**/*.{js|jsx}'"
@@ -34,6 +34,7 @@
     "html-webpack-plugin": "^5.5.0",
     "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.7.1",
+    "netlify-webpack-plugin": "^1.1.3",
     "node-sass": "^8.0.0",
     "react-svg-loader": "^3.0.3",
     "sass": "^1.56.1",
