@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const Container = styled.div`
- @media screen and (max-width:768px) {
+  @media screen and (max-width:769px) {
       display: none;
-  }
+  } 
 `
 
 const MenuWrapper = styled.div`
@@ -16,4 +16,9 @@ const Section = styled.div`
   justify-content: start;
   gap: 5px;
 `
-export { Container, MenuWrapper, Section }
+const MobileSearch = styled.div`
+  @media screen and (min-width:769px) {
+      display: none;
+  } 
+`
+export { Container, MenuWrapper, Section, MobileSearch }

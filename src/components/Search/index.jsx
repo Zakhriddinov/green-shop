@@ -1,5 +1,5 @@
 import { Dropdown } from "antd";
-import { Container, MenuWrapper, Section } from "./style";
+import { Container, MenuWrapper, MobileSearch, Section } from "./style";
 import { Button, Input } from "../Generic";
 import SearchIcon from "../../assets/icons/search.svg";
 
@@ -19,6 +19,7 @@ const Search = ({ icon }) => {
           placement="bottomRight"
           arrow={{ pointAtCenter: true }}
           trigger="click"
+          className="search"
         >
           <div>
             <Button width={"100%"}>
@@ -27,7 +28,9 @@ const Search = ({ icon }) => {
           </div>
         </Dropdown>
       </Container>
-      <Input icon={icon} height={34} />
+      <MobileSearch>
+        <Input icon={icon} height={34} />
+      </MobileSearch>
     </>
   );
 };

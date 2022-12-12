@@ -43,7 +43,7 @@ border-bottom: 0.3px solid rgba(70, 163, 88, 0.5);
   border-bottom:none;
   padding: 0px 30px;
   height: 60px;
-  .cFOrPc{
+  .avatar{
    display: none;
   }
   
@@ -57,11 +57,10 @@ const Section = styled.div`
 display: flex;
 align-items: center;
 cursor: ${({ logo }) => logo && "pointer"};
-@media screen and (min-width:768px) {
-   .gWrYJt{
-         display: none;
-    }
-    
+img{
+   @media screen and (max-width:768px) {
+      margin-right: 10px;
+   }
 }
 .active{
    color: var(--colorGreen);

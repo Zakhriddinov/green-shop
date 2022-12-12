@@ -69,16 +69,18 @@ const Navbar = () => {
                 <div className="count">99</div>
               </Basket>
             </Link>
-            <Dropdown
-              overlay={menu}
-              placement="topRight"
-              arrow={{ pointAtCenter: true }}
-              trigger="click"
-            >
-              <Button type="dark" width="35" height="35">
-                <Icon.User />
-              </Button>
-            </Dropdown>
+            <div className="avatar">
+              <Dropdown
+                overlay={menu}
+                placement="topRight"
+                arrow={{ pointAtCenter: true }}
+                trigger="click"
+              >
+                <Button type="dark" width="35" height="35">
+                  <Icon.User />
+                </Button>
+              </Dropdown>
+            </div>
             {/* <Button type="success" width="100" height="35">
                 <Icon.Login />
                 Login
