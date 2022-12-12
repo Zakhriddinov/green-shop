@@ -1,9 +1,9 @@
 import { Dropdown } from "antd";
 import { Container, MenuWrapper, Section } from "./style";
 import { Button, Input } from "../Generic";
-import { default as searchIcon } from "../../assets/icons/search.svg";
+import SearchIcon from "../../assets/icons/search.svg";
 
-const Search = () => {
+const Search = ({ icon }) => {
   const menu = (
     <MenuWrapper>
       <Section>
@@ -12,20 +12,23 @@ const Search = () => {
     </MenuWrapper>
   );
   return (
-    <Container>
-      <Dropdown
-        overlay={menu}
-        placement="bottomRight"
-        arrow={{ pointAtCenter: true }}
-        trigger="click"
-      >
-        <div>
-          <Button width={"100%"}>
-            <img src={searchIcon} alt="search icon" />
-          </Button>
-        </div>
-      </Dropdown>
-    </Container>
+    <>
+      <Container>
+        <Dropdown
+          overlay={menu}
+          placement="bottomRight"
+          arrow={{ pointAtCenter: true }}
+          trigger="click"
+        >
+          <div>
+            <Button width={"100%"}>
+              <SearchIcon />
+            </Button>
+          </div>
+        </Dropdown>
+      </Container>
+      <Input icon={icon} height={34} />
+    </>
   );
 };
 

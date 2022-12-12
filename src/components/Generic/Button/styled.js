@@ -9,6 +9,12 @@ const getType = ({ type }) => {
             border: "none",
             fontSize: "16px"
          }
+         case "dark":
+            return{
+               background:"var(--colorGreen)",
+               border:"none",
+               borderRadius:"50%"
+            }
       default:
          return {
             background: "#fff",
@@ -31,15 +37,10 @@ align-items: center;
 border-radius: 6px;
 font-family: "CeraPro-Medium",sans-serif;
 cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-
 height: ${({ height }) => (height ? `${height}px` : "44px")};
 width: ${getWidth};
 outline: none;
 ${getType}
-
-img{
-   margin-right:6px;
-}
 `
 
 

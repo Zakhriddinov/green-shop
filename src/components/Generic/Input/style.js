@@ -5,7 +5,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 3px;
-min-width: 300px;
+min-width: 100px;
 
 font-size: ${({ fontSize }) => fontSize ? `${fontSize}px` : "14px"};
 outline:none;
@@ -32,7 +32,7 @@ width: ${({ width }) => (width ? `${width}px` : '100%')};
 
 const Icon = styled.div`
 position: absolute;
-transform: translate(-50%, -50%);
+transform: translate(-50%, -40%);
 left: 20px;
 top: 50%;
 `

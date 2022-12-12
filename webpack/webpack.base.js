@@ -33,7 +33,7 @@ const rules = [
       }
    },
    {
-      test: /\.(svg|jpg|jpeg|png|gif)$/i,
+      test: /\.(jpg|jpeg|png|gif)$/i,
 
       use: [
          {
@@ -43,6 +43,20 @@ const rules = [
             }
          },
          'image-webpack-loader'
+      ]
+   },
+   {
+      test: /\.svg$/,
+      use: [
+         {
+            loader: "babel-loader"
+         },
+         {
+            loader: "react-svg-loader",
+            options: {
+               jsx: true // true outputs JSX tags
+            }
+         }
       ]
    },
    {
@@ -73,6 +87,7 @@ const resolve = {
 }
 
 const plugins = [
+
    new HtmlWebpackPlugin({
       inject: true,
       filename: 'index.html',
@@ -107,7 +122,10 @@ const config = {
 
    module: {
       rules
-   }
+   },
+   devServer: {
+      historyApiFallback: true,
+   },
 }
 module.exports = {
    config

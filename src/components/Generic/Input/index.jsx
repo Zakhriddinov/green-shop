@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import { Container, Icon, Wrapper } from "./style";
-
 const Input = forwardRef(
   (
     {
@@ -18,7 +17,9 @@ const Input = forwardRef(
   ) => {
     return (
       <Wrapper>
-        <Icon>{icon}</Icon>
+        <Icon>
+          {icon}
+        </Icon>
         <Container
           ref={ref}
           icon={icon}
@@ -35,5 +36,4 @@ const Input = forwardRef(
     );
   }
 );
-
 export default Input;

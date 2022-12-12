@@ -1,44 +1,89 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Search from '../../assets/icons/search.svg';
+import Bag from '../../assets/icons/bag.svg';
+import Login from '../../assets/icons/login.svg';
+import User from '../../assets/icons/user.svg';
 
 const Container = styled.nav`
 display: flex;
 flex-direction: column;
-`
 
+
+`
 const Main = styled.div`
 display: flex;
 justify-content: center;
 background-color: #fff;
+
+
+.sticky-nav{
+   position: fixed;
+   top: 0;
+   width: 100%;
+}
 `
+/* tablet - desktop */
 const Wrapper = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
 
 color: #fff;
-padding: var(--padding);
 height: 78px;
 
 width: 100%;
-max-width: 1440px;
+max-width: 1200px;
+border-bottom: 0.3px solid rgba(70, 163, 88, 0.5);
+
+@media screen and (min-width:992px) {
+   margin: 0 30px;
+}
+@media screen and (max-width:768px){
+  border-bottom:none;
+  padding: 0px 30px;
+  height: 60px;
+  .cFOrPc{
+   display: none;
+  }
+  
+}
+@media screen and (min-width:768px) {
+   margin: 0 30px;
+}
 `
+
 const Section = styled.div`
 display: flex;
 align-items: center;
 cursor: ${({ logo }) => logo && "pointer"};
-
+@media screen and (min-width:768px) {
+   .gWrYJt{
+         display: none;
+    }
+    
+}
 .active{
    color: var(--colorGreen);
-   border-bottom: ${({ route }) => route && "3px solid var(--colorGreen)"};
+   border-bottom: ${({ active }) => active && "3px solid var(--colorGreen)"};
+   padding: 28px 0;
+   
+   @media screen and (max-width:768px) {
+      border-bottom:none;
+   }
 }
+
 `
 const Link = styled(NavLink)`
 text-decoration: none;
 color: var(--colorBlack);
 font-family: "CeraPro-Medium",sans-serif;
-margin: ${({ route }) => route && "0px 25px"};
-border-bottom:${({ route }) => route && "3px solid #fff"};
+margin: ${({ active }) => active && "0px 25px"};
+border-bottom:${({ active }) => active && "3px solid #fff"};
+@media screen and (max-width:768px) {
+   display: none;
+   border-bottom:none;
+}
 `
 const Basket = styled.div`
 display: flex;
@@ -62,7 +107,78 @@ margin: 0px 30px;
    font-size: 10px;
    font-family: "CeraPro-Medium",sans-serif;
    color: white;
+   @media screen and (max-width:768px) {
+      right: -16px;
+   }
+}
+`
+const Mobile = styled.div`
+display: none;
+@media screen and (max-width:768px){
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px -10px 30px rgba(184, 184, 184, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  .active{
+    color: var(--colorGreen);
+    svg,path{
+      fill: var(--colorGreen);
+    }
+  }
+}
+`
+const MobileLink = styled(NavLink)`
+@media screen and (max-width:768px){  
+   text-decoration: none;
+   color: #D9D9D9;
+   font-family: "CeraPro-Regular",sans-serif;
+   font-size: 14px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   svg,path{
+      fill: #D9D9D9;
+    }
 }
 `
 
-export { Container, Main, Wrapper, Section, Link, Basket };
+const Icon = styled.div``
+Icon.Search = styled(Search)`
+svg , path{
+   fill: var(--colorSilver-ae);  
+}
+`
+Icon.Basket = styled(Bag)``
+Icon.Login = styled(Login)`
+margin-right: 6px;
+`
+Icon.User = styled(User)`
+svg,path{
+   fill: #fff;
+}
+`
+const Menu = styled.div`
+width: 177px;
+display: flex;
+flex-direction: column;
+background-color: #fff;
+padding: 16px;
+gap: 16px;
+border-radius: 5px;
+box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06),
+    0px 7px 46px rgba(0, 0, 0, 0.06), 0px 8px 15px rgba(0, 0, 0, 0.06);
+`
+Menu.Item = styled.div`
+  font-family: "CeraPro-Regular",sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  color: #000000;
+`
+export { Container, Main, Wrapper, Section, Link, Basket, Icon, Mobile, MobileLink, Menu };
