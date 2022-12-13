@@ -93,8 +93,8 @@ flex-direction: column;
    border-radius: 50%;
    margin-bottom: 15px;
    @media screen and (max-width:960px){
-  margin: 0 auto;
-}
+     margin: 10px auto;
+    }
    img{
       margin-top: -15px;
       margin-left: 10px;
@@ -112,6 +112,9 @@ font-size: 18px;
 line-height: 16px;
 color: var(--colorBlack);
 margin-bottom: 9px;
+@media screen and (max-width:960px){
+  font-size: 16px;
+}
 `
 Content.Item = styled(Link)`
 font-family: 'CeraPro-Regular',sans-serif;
@@ -119,6 +122,10 @@ font-size: 14px;
 line-height: 30px;
 color: var(--colorBlack);
 text-decoration: none;
+
+@media screen and (max-width:960px){
+  font-size: 13px;
+}
 `
 Content.Link = styled.a`
 display: flex;
@@ -138,6 +145,10 @@ font-family: 'CeraPro-Regular',sans-serif;
 font-size: 14px;
 line-height: 22px;
 color: var(--colorBlack);
+
+@media screen and (max-width:960px){
+  font-size: 13px;
+}
 `
 const Line = styled.div`
 width: 1px;
