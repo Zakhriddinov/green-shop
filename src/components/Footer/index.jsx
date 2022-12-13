@@ -32,7 +32,7 @@ const Why = () => {
             </Info.Item>
           </Content>
           <Line />
-          <Content >
+          <Content>
             <div className="circle">
               <img src={graden} alt="" />
             </div>
@@ -44,7 +44,7 @@ const Why = () => {
           </Content>
           <Content className="input">
             <Content.Title>Would you like to join newsletters?</Content.Title>
-            <Input placeholder="enter your email address..."/>
+            <Input placeholder="enter your email address..." />
             <Info.Item>
               We usually post offers and challenges in newsletter. We’re your
               online houseplant destination. We offer a wide range of
@@ -100,6 +100,20 @@ const Why = () => {
           </Content>
           <Content>
             <Content.Title>Social Media</Content.Title>
+            <div className="wrap">
+              <Content.Link href="#">
+                <Icon.Facebook />
+              </Content.Link>
+              <Content.Link href="#">
+                <Icon.Instagram />
+              </Content.Link>
+              <Content.Link href="#">
+                <Icon.Twitter />
+              </Content.Link>
+              <Content.Link href="#">
+                <Icon.Linkedin />
+              </Content.Link>
+            </div>
             <Content.Title>We accept</Content.Title>
             <img src={accept} alt="acceptImg" />
           </Content>
