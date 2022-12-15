@@ -3,10 +3,14 @@ import { BrowserRouter } from 'react-router-dom';
 import Root from './root';
 import './index.css'
 import "antd/dist/antd";
+import { Provider } from 'react-redux';
+import { store } from './redux';
 const root = createRoot(document.getElementById("root"));
 
 root.render(
-   <BrowserRouter>
-      <Root />
-   </BrowserRouter>
+   <Provider store={store}>
+      <BrowserRouter>
+         <Root />
+      </BrowserRouter>
+   </Provider>
 )

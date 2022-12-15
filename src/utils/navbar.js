@@ -26,7 +26,7 @@ const navbar = [
    },
    {
       id: useId,
-      path: "/products",
+      path: "/products/:id",
       element: <Generic />,
       title: 'Products',
       Icon: HomeIcon,

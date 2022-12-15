@@ -5,6 +5,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const SimpleWebpackProgress = require("simple-progress-webpack-plugin");
 const CircularWebpackDependencies = require("circular-dependency-plugin");
 const StylelintWebpackPlugin = require("stylelint-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 
 const entry = ['./src/index.js']
 
@@ -109,7 +110,8 @@ const plugins = [
    new ESLintPlugin(),
    new StylelintWebpackPlugin({
       files: '**/*.js'
-   })
+   }),
+   new Dotenv()
 ]
 
 const config = {

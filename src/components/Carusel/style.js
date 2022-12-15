@@ -45,6 +45,9 @@ margin-bottom: 46px;
      bottom: 10px;
    }
    margin-bottom: 20px;
+   margin-top: 20px;
+   background: linear-gradient(104.74deg, rgba(70, 163, 88, 0.2) 1.08%, rgba(70, 163, 88, 0.1) 99.23%);
+   border-radius: 30px;
 }
 `
 
@@ -99,6 +102,10 @@ p{
   p{
    font-size: 13px;
    margin-bottom: 20px;
+   line-height: 14px;
+   span{
+      display: none;
+   }
   }
   button{
    font-size: 14px;
