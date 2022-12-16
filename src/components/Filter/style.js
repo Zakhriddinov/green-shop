@@ -5,7 +5,8 @@ import styled from 'styled-components';
 const Container = styled.div`
 max-width: 310px;
 width: 100%;
-
+display: flex;
+flex-direction: column;
 p{
    font-family: 'CeraPro-Regular',sans-serif;
    font-style: normal;
@@ -38,6 +39,7 @@ font-weight: 700;
 font-size: 18px;
 line-height: 16px;
 color: var(--colorBlack);
+margin-top: ${({ top }) => top && "35px"};
 `
 Content.Item = styled(Link)`
 display: flex;
@@ -75,5 +77,15 @@ max-width: 210px;
    display: none;
 }
 `
-
-export { Container, Content, SliderAnt }
+const Advertising = styled.div`
+width: 100%;
+background: linear-gradient(180deg, rgba(70, 163, 88, 0.1) 0%, rgba(70, 163, 88, 0.03) 100%);
+height: 468px;
+.adv{
+   width: 100%;
+}
+.supers{
+  margin-left: 20px;
+}
+`
+export { Container, Content, SliderAnt, Advertising }

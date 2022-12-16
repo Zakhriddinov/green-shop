@@ -3,7 +3,7 @@ import { Container, Content, HoverElement, ImageWrap, Links } from "./style";
 
 const ProductCard = ({ data = {}, onClick, top }) => {
   const { title, price, images } = data;
-
+  
   const Link = (
     <>
       <Links to="/">

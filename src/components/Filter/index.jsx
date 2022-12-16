@@ -1,6 +1,7 @@
-import { Container, Content, SliderAnt } from "./style";
+import { Advertising, Container, Content, SliderAnt } from "./style";
 import { Button } from "../Generic";
-
+import img from "../../assets/images/img.png";
+import supers from "../../assets/images/supers.png";
 const Filter = () => {
   return (
     <Container>
@@ -14,7 +15,7 @@ const Filter = () => {
             </Content.Item>
           ))}
         </Content.List>
-        <Content.Title>Price Range</Content.Title>
+        <Content.Title top>Price Range</Content.Title>
         <Content.List>
           <SliderAnt range defaultValue={[0, 1230]} />
           <p>
@@ -24,7 +25,7 @@ const Filter = () => {
             Filter
           </Button>
         </Content.List>
-        <Content.Title>Size</Content.Title>
+        <Content.Title top>Size</Content.Title>
         <Content.List>
           {Array.from({ length: 3 }).map((_, idx) => (
             <Content.Item key={idx}>
@@ -34,6 +35,11 @@ const Filter = () => {
           ))}
         </Content.List>
       </Content>
+      <Advertising>
+        <img src={supers} alt="img" className="supers" />
+        <Content.Title style={{textAlign:"center"}}>UP TO 75% OFF</Content.Title>
+        <img src={img} alt="img" className="adv" />
+      </Advertising>
     </Container>
   );
 };
