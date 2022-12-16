@@ -3,13 +3,13 @@ import { Container, Content, HoverElement, ImageWrap, Links } from "./style";
 
 const ProductCard = ({ data = {}, onClick, top }) => {
   const { title, price, images } = data;
-  
+
   const Link = (
     <>
-      <Links to="/">
+      <Links to="/shopping-cart">
         <Links.Basket />
       </Links>
-      <Links to="/">
+      <Links to="/favorites">
         <Links.Heart />
       </Links>
       <Links to="/">
@@ -18,11 +18,11 @@ const ProductCard = ({ data = {}, onClick, top }) => {
     </>
   );
   return (
-    <Container onClick={onClick} top={top}>
-      <ImageWrap>
+    <Container top={top}>
+      <ImageWrap onClick={onClick}>
         <ImageWrap.Img src={images ? images[0]?.url : "noimage"} alt={title} />
-        <HoverElement>{Link}</HoverElement>
       </ImageWrap>
+      <HoverElement>{Link}</HoverElement>
       <Content>
         <Content.Title>{title}</Content.Title>
         <Content.Price>${price}</Content.Price>

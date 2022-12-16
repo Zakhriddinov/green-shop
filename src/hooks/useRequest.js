@@ -1,13 +1,13 @@
 const { BASE_URL } = process.env;
 
-const useRequest = () => {
+export const useRequest = () => {
    const request = async ({
       me,
       url,
       method = "GET",
       body,
       token,
-      headers = {}
+      headers = {},
    }) => {
       if (token)
          headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
@@ -15,17 +15,17 @@ const useRequest = () => {
       const options = {
          method,
          headers: { ...headers, "Content-Type": "application/json" },
-         body: JSON.stringify(body)
-      }
+         body: JSON.stringify(body),
+      };
 
       return fetch(
-         `${me ? "https://green-shop-backends.onrender.com/api" : BASE_URL
+         `${me ? "https://green-shop-server.herokuapp.com/api" : BASE_URL
          }${url}`,
          options
       ).then((res) => res.json());
-   }
+   };
 
    return request;
-}
+};
 
 export default useRequest;

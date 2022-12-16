@@ -12,7 +12,7 @@ const HomePage = React.lazy(() => import("../pages/Home"));
 const navbar = [
    {
       id: useId,
-      path: "/",
+      path: "/home",
       element: (
          <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
             <HomePage />
@@ -21,8 +21,7 @@ const navbar = [
       title: "Home",
       Icon: HomeIcon,
       private: false,
-      hidden: false,
-      mobile: true
+      hidden: false
    },
    {
       id: useId,
@@ -31,8 +30,8 @@ const navbar = [
       title: 'Products',
       Icon: HomeIcon,
       private: false,
-      hidden: false,
-      mobile: true
+      hidden: true,
+      mobile: false
    },
    {
       id: useId,

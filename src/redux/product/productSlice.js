@@ -10,8 +10,8 @@ const initialState = {
 
 export const getProducts = createAsyncThunk(
    'product/getAll',
-   async () => {
-      const response = await instance.get(`/products`).then((res => res.data))
+   async ({ search }) => {
+      const response = await instance.get(`/products${search}`).then((res => res.data))
       return response
    }
 )

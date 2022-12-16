@@ -9,12 +9,17 @@ const getType = ({ type }) => {
             border: "none",
             fontSize: "16px"
          }
-         case "dark":
-            return{
-               background:"var(--colorGreen)",
-               border:"none",
-               borderRadius:"50%"
-            }
+      case "dark":
+         return {
+            background: "var(--colorGreen)",
+            border: "none",
+            borderRadius: "50%"
+         }
+      case "category":
+         return {
+            background: "white",
+            border: "none",
+         }
       default:
          return {
             background: "#fff",

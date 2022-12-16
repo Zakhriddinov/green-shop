@@ -37,6 +37,9 @@ margin-top: 60px;
       }
    }
 }
+@media screen and (max-width:768px){
+   justify-content: center;
+}
 `
 const PaginationAnt = styled(Pagination)``
 export { Container, PaginationAnt }

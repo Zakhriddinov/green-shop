@@ -19,6 +19,9 @@ span{
    font-family: 'CeraPro-Bold',sans-serif;
    color: var(--colorGreen);
 }
+@media screen and (max-width:768px){
+ display: none; 
+}
 `
 const Content = styled.div`
 background: #FBFBFB;

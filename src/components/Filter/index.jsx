@@ -2,15 +2,15 @@ import { Advertising, Container, Content, SliderAnt } from "./style";
 import { Button } from "../Generic";
 import img from "../../assets/images/img.png";
 import supers from "../../assets/images/supers.png";
-const Filter = () => {
+const Filter = ({ category = {} }) => {
   return (
     <Container>
       <Content>
         <Content.Title>Categories</Content.Title>
         <Content.List>
-          {Array.from({ length: 9 }).map((_, idx) => (
+          {category?.map((value, idx) => (
             <Content.Item key={idx}>
-              <p>House Plants</p>
+              <p>{value.name}</p>
               <p>(33)</p>
             </Content.Item>
           ))}
@@ -37,7 +37,9 @@ const Filter = () => {
       </Content>
       <Advertising>
         <img src={supers} alt="img" className="supers" />
-        <Content.Title style={{textAlign:"center"}}>UP TO 75% OFF</Content.Title>
+        <Content.Title style={{ textAlign: "center" }}>
+          UP TO 75% OFF
+        </Content.Title>
         <img src={img} alt="img" className="adv" />
       </Advertising>
     </Container>

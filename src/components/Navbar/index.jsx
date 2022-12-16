@@ -31,25 +31,8 @@ const Navbar = () => {
     <Container>
       <Main>
         <Wrapper>
-          <Section onClick={() => navigate("/")} logo>
+          <Section onClick={() => navigate("/home")} logo>
             <img src={logo} alt="logo" />
-          </Section>
-          <Section active>
-            {navbar.map(({ title, path, hidden, mobile }, index) => {
-              return (
-                !hidden &&
-                mobile && (
-                  <Link
-                    key={index}
-                    to={path}
-                    className={({ isActive }) => isActive && "active"}
-                    active
-                  >
-                    {title}
-                  </Link>
-                )
-              );
-            })}
           </Section>
           <Section>
             <Search icon={<Icon.Search />} />
