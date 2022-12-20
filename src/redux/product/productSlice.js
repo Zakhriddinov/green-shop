@@ -3,39 +3,64 @@ import instance from '../../axios';
 
 const initialState = {
    products: [],
+   product: {},
    loading: false,
-   status: "",
-   error: ""
+   error: null,
+   isError: ""
 }
-
-export const getProducts = createAsyncThunk(
-   'product/getAll',
-   async ({ search }) => {
-      const response = await instance.get(`/products${search}`).then((res => res.data))
-      return response
+export const getProduct = createAsyncThunk(
+   'product/details',
+   async (id) => {
+      const response = await instance.get(`/products/get-one/${id}`)
+      return response.data
    }
 )
 
 const productSlice = createSlice({
    name: "product",
    initialState,
+   reducers: {
+      getProducts: state => {
+         state.loading = true
+      },
+      getProductsSuccess: (state, { payload }) => {
+         state.products = payload;
+         state.loading = false;
+         state.isError = false
+      },
+      getProductsFail: (state, { payload }) => {
+         state.isError = true;
+         state.error = payload
+      }
+   },
    extraReducers: builder => {
       builder
-         .addCase(getProducts.pending, (state) => {
+         .addCase(getProduct.pending, state => {
             state.loading = true
-            state.status = "pending"
          })
-         .addCase(getProducts.fulfilled, (state, { payload }) => {
+         .addCase(getProduct.fulfilled, (state, { payload }) => {
             state.loading = false
-            state.status = "fulfilled"
-            state.products = payload
+            state.product = payload
+            state.isError = false
          })
-         .addCase(getProducts.rejected, (state, { payload }) => {
+         .addCase(getProduct.rejected, (state, { payload }) => {
             state.loading = false
-            state.status = "rejected"
+            state.isError = true
             state.error = payload
          })
    }
 })
-
+export const { getProducts, getProductsSuccess, getProductsFail } = productSlice.actions
 export default productSlice.reducer
+
+export function fetchProducts(search) {
+   return async (dispatch) => {
+      dispatch(getProducts());
+      try {
+         const response = await instance.get(`/products${search}`)
+         dispatch(getProductsSuccess(response.data))
+      } catch (error) {
+         dispatch(getProductsFail(error))
+      }
+   }
+}

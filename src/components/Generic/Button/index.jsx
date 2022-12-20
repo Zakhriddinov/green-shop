@@ -1,6 +1,16 @@
 import { Container } from "./styled";
 
-const Button = ({ children, type, onClick, width, height, disabled, icon }) => {
+const Button = ({
+  children,
+  type,
+  onClick,
+  width,
+  height,
+  disabled,
+  icon,
+  size,
+  style,
+}) => {
   return (
     <Container
       disabled={disabled}
@@ -9,6 +19,8 @@ const Button = ({ children, type, onClick, width, height, disabled, icon }) => {
       width={width}
       height={height}
       icon={icon}
+      size={size}
+      style={style}
     >
       {children || "Generic Button"}
     </Container>

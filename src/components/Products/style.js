@@ -14,6 +14,8 @@ margin-bottom: 100px;
 }
 `
 const Wrap = styled.div`
+  max-width: 840px;
+  width: 100%;
   .sort{
       display: flex;
       align-items: center;
@@ -42,10 +44,8 @@ const Wrap = styled.div`
 .wrapper{
    display: grid;
    grid-auto-flow:row;
-   grid-template-columns: repeat(auto-fit,minmax(258px,1fr));
-   grid-gap: 33px;
-   max-width: 840px;
-   width: 100%; 
+   grid-template-columns: repeat(3,minmax(258px,1fr));
+   grid-gap: 33px; 
    margin-top: 38px;
    @media screen and (max-width:768px){
       width: 100%;

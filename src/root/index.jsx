@@ -12,6 +12,7 @@ const Root = () => {
             <Route path={path} key={id} element={element} />
           ))}
         </Route>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="*" element={<h1>404 NOT FOUND</h1>} />
       </Routes>
     </>

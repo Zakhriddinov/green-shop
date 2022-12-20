@@ -20,6 +20,20 @@ const getType = ({ type }) => {
             background: "white",
             border: "none",
          }
+      case "size":
+         return {
+            borderRadius: "50%",
+            border: "1px solid #EAEAEA",
+            color: "#727272",
+            fontSize: "14px",
+            background: "#fff"
+         }
+      case "outline-cart":
+         return {
+            border: "1px solid #46A358",
+            background: "#fff",
+            color: "var(--colorGreen)",
+         }
       default:
          return {
             background: "#fff",
@@ -39,7 +53,7 @@ const Container = styled.button`
 display: flex;
 justify-content: center;
 align-items: center;
-border-radius: 6px;
+border-radius: ${({ size }) => size ? "18px" : "6px"};
 font-family: "CeraPro-Medium",sans-serif;
 cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 height: ${({ height }) => (height ? `${height}px` : "44px")};

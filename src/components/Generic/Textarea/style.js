@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.input`
+const Container = styled.textarea`
 display: flex;
 justify-content: center;
 align-items: center;
@@ -10,9 +10,9 @@ min-width: 100px;
 font-size: ${({ fontSize }) => fontSize ? `${fontSize}px` : "14px"};
 outline:none;
 border: 1px solid var(--colorSilver-ae);
-height:${({ height }) => height ? `${height}px` : "40px"};
+height:${({ height }) => height ? `${height}px` : "100px"};
 width:${({ width }) => width ? `${width}px` : "100%"};
-padding:${({ icon }) => icon ? '0px 35px' : '0px 13px'};
+padding:13px;
 font-family:'CeraPro-Regular',sans-serif;
 color:var(--colorGreen);
 letter-spacing:1.1px;
@@ -24,18 +24,4 @@ letter-spacing:1.1px;
 }
 `
 
-const Wrapper = styled.div`
-position: relative;
-display: flex;
-align-items: center;
-width: ${({ width }) => (width ? `${width}px` : '100%')};
-`
-
-const Icon = styled.div`
-position: absolute;
-transform: translate(-50%, -40%);
-left: 20px;
-top: 50%;
-`
-
-export { Container, Wrapper, Icon }
+export { Container }

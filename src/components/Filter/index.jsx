@@ -8,8 +8,8 @@ const Filter = ({ category = {} }) => {
       <Content>
         <Content.Title>Categories</Content.Title>
         <Content.List>
-          {category?.map((value, idx) => (
-            <Content.Item key={idx}>
+          {category?.map((value) => (
+            <Content.Item key={value._id}>
               <p>{value.name}</p>
               <p>(33)</p>
             </Content.Item>
