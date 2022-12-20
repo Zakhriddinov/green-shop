@@ -22,7 +22,7 @@ const navbar = [
       title: "Home",
       Icon: HomeIcon,
       private: false,
-      hidden: false
+      hidden: false,
    },
    {
       id: useId,
@@ -67,7 +67,7 @@ const navbar = [
       Icon: UserIcon,
       private: true,
       hidden: false,
-      mobile: false
+      mobile: false,
    }
 ]
 export default navbar;

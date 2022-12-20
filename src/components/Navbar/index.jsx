@@ -22,7 +22,7 @@ import Modal from "../Register";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("access_token");
   const navigate = useNavigate();
   const showModal = () => {
     setIsModalOpen(true);
@@ -40,7 +40,7 @@ const Navbar = () => {
     },
   }) => {
     if (name === "logout") {
-      localStorage.removeItem("token");
+      localStorage.removeItem("access_token");
       navigate(`/home`);
     } else {
       navigate(`${name}`);

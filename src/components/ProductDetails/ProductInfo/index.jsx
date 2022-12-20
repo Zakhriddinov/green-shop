@@ -1,15 +1,18 @@
 import React from "react";
+import { Rating } from "react-simple-star-rating";
 import Button from "../../Generic/Button";
 import Paragraph from "../../Generic/Typography/Paragraph";
 import { Content, Icon } from "./style";
 
 const ProductInfo = ({ product }) => {
+  console.log(product);
   return (
     <Content>
       <Content.Title>{product?.title}</Content.Title>
       <Content.Header>
         <div className="price">${product?.price}.00</div>
         <Paragraph type="size15" color={"var(--colorBlack)"}>
+          <Rating readonly size={20} initialValue={product.rating} />{" "}
           {product?.reviewsNumber} Customer Review
         </Paragraph>
       </Content.Header>

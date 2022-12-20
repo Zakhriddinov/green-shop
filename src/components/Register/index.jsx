@@ -3,7 +3,12 @@ import Signin from "../Signin";
 import Signup from "../Signup";
 import { AntTabs, Container, ModalAnt } from "./style";
 
-const Modal = ({ isModalOpen, handleOk, handleCancel, setIsModalOpen }) => {
+const Modal = ({
+  isModalOpen = true,
+  handleOk,
+  handleCancel,
+  setIsModalOpen,
+}) => {
   const isSuccess = () => setIsModalOpen(false);
   return (
     <ModalAnt open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
@@ -21,7 +26,7 @@ const Modal = ({ isModalOpen, handleOk, handleCancel, setIsModalOpen }) => {
             {
               label: `Register`,
               key: "2",
-              children: <Signup onOk={handleOk} isSuccess={isSuccess}/>,
+              children: <Signup onOk={handleOk} isSuccess={isSuccess} />,
             },
           ]}
         />

@@ -2,7 +2,7 @@ import WriteReview from "./WriteReview";
 import Description from "./Description";
 import { AntTabs, Container } from "./style";
 
-const DescriptionReviewTab = () => {
+const DescriptionReviewTab = ({ product }) => {
   return (
     <Container>
       <AntTabs
@@ -16,9 +16,9 @@ const DescriptionReviewTab = () => {
           },
 
           {
-            label: `Reviews (19)`,
+            label: `Reviews (${product?.reviewsNumber})`,
             key: "2",
-            children: <WriteReview />,
+            children: <WriteReview product={product} />,
           },
         ]}
       />

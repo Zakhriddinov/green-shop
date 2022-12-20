@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import instance from "../../axios";
+import { useDispatch } from "react-redux";
+import { loginUserThunk } from "../../redux/auth/authSlice";
 import { Button } from "../Generic";
 import Input from "../Generic/Input";
 import { Content } from "../Register/style";
 
 const Signin = ({ isSuccess }) => {
   const [body, setBody] = useState({});
-  const navigate = useNavigate();
 
   const onChange = ({ target: { value, name } }) => {
     setBody({
@@ -16,16 +15,12 @@ const Signin = ({ isSuccess }) => {
     });
   };
 
-  const onSubmit = async () => {
-    await instance.post("/users/login", body).then((res) => {
-      if (res.data) {
-        navigate("/profile");
-        localStorage.setItem("token", JSON.stringify(res.data.token));
-        isSuccess();
-      }
-    });
+  const dispatch = useDispatch();
+  const onSubmit = () => {
+    dispatch(loginUserThunk(body))
+    isSuccess();
   };
-  
+
   return (
     <Content>
       <p>Enter your username and password to login.</p>

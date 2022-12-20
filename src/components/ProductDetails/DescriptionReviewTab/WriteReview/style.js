@@ -2,6 +2,7 @@ import { Select } from "antd";
 import styled from "styled-components";
 import User from "../../../../assets/icons/user.svg"
 const Container = styled.div`
+width: 1200px;
 .buttonStyle{
    display: flex;
    justify-content: end;

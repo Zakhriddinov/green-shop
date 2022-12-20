@@ -16,14 +16,13 @@ const ProductDetails = () => {
     dispatch(getProduct(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
   return (
     <Container>
       <Wrapper>
         <ImageCarousel images={product?.images} />
         <ProductInfo product={product} />
       </Wrapper>
-      <DescriptionReviewTab />
+      <DescriptionReviewTab product={product} />
     </Container>
   );
 };
