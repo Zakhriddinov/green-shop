@@ -48,6 +48,12 @@ const AntTabs = styled(Tabs)``
 const Content = styled.div`
 display: flex;
 flex-direction: column;
+span{
+   font-family: "CeraPro-Regular",sans-serif;
+   font-size: 13px;
+   color: red;
+   margin-top: 5px;
+}
 p{
    font-family: 'CeraPro-Regular',sans-serif;
    font-style: normal;

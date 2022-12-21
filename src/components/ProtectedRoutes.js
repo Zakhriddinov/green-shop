@@ -1,28 +1,19 @@
-import { useEffect, useState } from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import instance from '../axios'
-import HomePage from '../pages/Home'
-import Modal from './Register'
+import { Navigate, Outlet } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 
-const ProtectedRoutes = ({ role }) => {
-   const [isAuth, setIsAuth] = useState()
-   useEffect(() => {
-      instance.get("/get-token").then(data => {
-         if (data.data.token) {
-            setIsAuth(data.data.token)
-         }
-         return isAuth
-      })
-   }, [isAuth]);
-   if (isAuth === "undefined") return <Modal />
-   return isAuth && (role === "admin") && isAuth !== "admin" ? (
-      <Navigate to={"/home"} />
-   ) : isAuth && role === "admin" ? (
+const ProtectedRoutes = ({ admin }) => {
+   const token = localStorage.getItem("access_token");
+   const isAuth = token && jwt_decode(`${token}`).email;
+
+   if (isAuth === undefined) return <h1>Not foun</h1>
+   return isAuth && admin && isAuth !== "admin" ? (
+      <Navigate to="/login" />
+   ) : isAuth && admin ? (
       <Outlet />
-   ) : isAuth && role === "user" ? (
+   ) : isAuth && !admin ? (
       <Outlet />
    ) : (
-      <Navigate to="/home" />
+      <h1>Not foun</h1>
    )
 }
 export default ProtectedRoutes

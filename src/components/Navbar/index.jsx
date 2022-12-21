@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   Container,
   Main,
@@ -19,11 +19,17 @@ import { Button } from "../Generic";
 import { Dropdown } from "antd";
 import { useState } from "react";
 import Modal from "../Register";
+import jwt_decode from "jwt-decode";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const token = localStorage.getItem("access_token");
+  const isAdmin = token && jwt_decode(`${token}`).isAdmin;
+
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -46,13 +52,24 @@ const Navbar = () => {
       navigate(`${name}`);
     }
   };
+  
   const menu = (
     <Menu>
-      <Menu.Item data-name="profile" onClick={onClickProfile}>
+      <Menu.Item data-name="profile/account-details" onClick={onClickProfile}>
         My Profile
       </Menu.Item>
       <Menu.Item data-name="favorites" onClick={onClickProfile}>
         Favourites
+      </Menu.Item>
+      <Menu.Item data-name="logout" onClick={onClickProfile}>
+        Log out
+      </Menu.Item>
+    </Menu>
+  );
+  const admin = (
+    <Menu>
+      <Menu.Item data-name="profile/account-details" onClick={onClickProfile}>
+        Admin Dashboard
       </Menu.Item>
       <Menu.Item data-name="logout" onClick={onClickProfile}>
         Log out
@@ -75,9 +92,20 @@ const Navbar = () => {
               </Basket>
             </Link>
             <div className="avatar">
-              {token ? (
+              {isAdmin === false ? (
                 <Dropdown
                   overlay={menu}
+                  placement="topRight"
+                  arrow={{ pointAtCenter: true }}
+                  trigger="click"
+                >
+                  <Button type="dark" width="35" height="35">
+                    <Icon.User />
+                  </Button>
+                </Dropdown>
+              ) : isAdmin === true ? (
+                <Dropdown
+                  overlay={admin}
                   placement="topRight"
                   arrow={{ pointAtCenter: true }}
                   trigger="click"
@@ -133,7 +161,7 @@ const Navbar = () => {
       </Main>
       <div className="menu_line"></div>
       <Outlet />
-      <Footer />
+      {pathname.substring(0, 8) === "/profile" ? null : <Footer />}
     </Container>
   );
 };

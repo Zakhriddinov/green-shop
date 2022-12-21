@@ -9,6 +9,7 @@ import FavoritesIcon from '../assets/icons/favorites.svg'
 
 const HomePage = React.lazy(() => import("../pages/Home"));
 const ProductDetailsPage = React.lazy(() => import("../pages/ProductDetails"));
+const ProfilePage = React.lazy(() => import("../pages/Profile"));
 
 const navbar = [
    {
@@ -21,7 +22,7 @@ const navbar = [
       ),
       title: "Home",
       Icon: HomeIcon,
-      private: false,
+      privat: false,
       hidden: false,
    },
    {
@@ -34,7 +35,7 @@ const navbar = [
       ),
       title: 'Products',
       Icon: HomeIcon,
-      private: false,
+      privat: false,
       hidden: true,
       mobile: false
    },
@@ -44,7 +45,7 @@ const navbar = [
       element: <Generic />,
       title: 'Favorites',
       Icon: FavoritesIcon,
-      private: false,
+      privat: false,
       hidden: false,
       mobile: false
    },
@@ -54,7 +55,7 @@ const navbar = [
       element: <Generic />,
       title: 'Basket',
       Icon: BagIcon,
-      private: false,
+      privat: false,
       hidden: false,
       basket: true,
       mobile: false
@@ -62,10 +63,14 @@ const navbar = [
    {
       id: useId,
       path: "/profile",
-      element: <Generic />,
+      element: (
+         <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+            <ProfilePage />
+         </React.Suspense>
+      ),
       title: 'Profile',
       Icon: UserIcon,
-      private: true,
+      privat: true,
       hidden: false,
       mobile: false,
    }

@@ -2,33 +2,52 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import instance from "../../axios";
 
 const initialState = {
-   isAuthenticed: false,
-   isAuthenticating: false,
+   loading: false,
+   status: false,
    isError: false,
-   error: null
+   error: ""
 }
 
 export const registerUserThunk = createAsyncThunk(
    'auth/register',
-   async (body) => {
-      const response = await instance.post("/users/register", body).then((res) => {
-         if (res.data) {
-            localStorage.setItem("access_token", `Bearer ${res.data.token}`)
-         }
-      })
-      return response.data
+   async (body, thunkAPI) => {
+      try {
+         return await instance.post("/users/register", body).then((res) => {
+            if (res.data) {
+               localStorage.setItem("access_token", `Bearer ${res.data.token}`)
+            }
+         })
+      } catch (error) {
+         const message =
+            (error.response &&
+               error.response.data &&
+               error.response.data.message) ||
+            error.message ||
+            error.toString()
+         return thunkAPI.rejectWithValue(message)
+      }
+
    }
 )
 
 export const loginUserThunk = createAsyncThunk(
    "auth/login",
-   async (body) => {
-      const response = await instance.post('/users/login', body).then((res) => {
-         if (res.data) {
-            localStorage.setItem("access_token", `Bearer ${res.data.token}`)
-         }
-      })
-      return response.data
+   async (body, thunkAPI) => {
+      try {
+         return await instance.post('/users/login', body).then((res) => {
+            if (res.data) {
+               localStorage.setItem("access_token", `${res.data.token}`)
+            }
+         })
+      } catch (error) {
+         const message =
+            (error.response &&
+               error.response.data &&
+               error.response.data.message) ||
+            error.message ||
+            error.toString()
+         return thunkAPI.rejectWithValue(message)
+      }
    }
 )
 
@@ -43,27 +62,34 @@ const authSlice = createSlice({
    extraReducers: (builder) => {
       builder
          .addCase(registerUserThunk.pending, (state) => {
-            state.isAuthenticating = true
+            state.loading = true;
+            state.status = "pending";
          })
-         .addCase(registerUserThunk.fulfilled, (state, { payload }) => {
-            state.isAuthenticating = false;
+         .addCase(registerUserThunk.fulfilled, (state) => {
+            state.loading = false;
+            state.status = "fulfilled";
             state.isError = false;
-            console.log(payload);
          })
-         .addCase(registerUserThunk.rejected, (state) => {
-            state.isAuthenticating = false;
+         .addCase(registerUserThunk.rejected, (state, { payload }) => {
+            state.loading = false;
+            state.status = "rejected";
             state.isError = true;
+            state.error = payload
          })
          .addCase(loginUserThunk.pending, (state) => {
-            state.isAuthenticed = true
+            state.loading = true;
+            state.status = "pending";
          })
-         .addCase(loginUserThunk.fulfilled, (state,) => {
-            state.isAuthenticed = false;
+         .addCase(loginUserThunk.fulfilled, (state) => {
+            state.loading = false;
+            state.status = "fulfilled";
             state.isError = false;
          })
-         .addCase(loginUserThunk.rejected, (state) => {
-            state.isAuthenticed = false;
+         .addCase(loginUserThunk.rejected, (state, { payload }) => {
+            state.loading = false;
+            state.status = "rejected";
             state.isError = true;
+            state.error = payload
          })
    }
 })

@@ -9,6 +9,18 @@ const getType = ({ type }) => {
             linHeight: "24px",
             color: "#3D3D3D"
          }
+      case "size18":
+         return {
+            fontSize: "18px",
+            linHeight: "16px",
+            color: "#3D3D3D"
+         }
+      case "size16":
+         return {
+            fontSize: "16px",
+            linHeight: "16px",
+            color: "#3D3D3D"
+         }
    }
 }
 const Container = styled.h2`

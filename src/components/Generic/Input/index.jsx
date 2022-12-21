@@ -12,14 +12,13 @@ const Input = forwardRef(
       width,
       height,
       icon,
+      ...rest
     },
     ref
   ) => {
     return (
       <Wrapper>
-        <Icon>
-          {icon}
-        </Icon>
+        <Icon>{icon}</Icon>
         <Container
           ref={ref}
           icon={icon}
@@ -31,6 +30,7 @@ const Input = forwardRef(
           type={type}
           width={width}
           height={height}
+          {...rest}
         />
       </Wrapper>
     );
