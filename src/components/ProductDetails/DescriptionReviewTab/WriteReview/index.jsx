@@ -1,5 +1,3 @@
-import { useState } from "react";
-import instance from "../../../../axios";
 import Button from "../../../Generic/Button";
 import Modal from "../../../Generic/Modal";
 import Textarea from "../../../Generic/Textarea";
@@ -7,51 +5,15 @@ import BoldText from "../../../Generic/Typography/BoldText";
 import Paragraph from "../../../Generic/Typography/Paragraph";
 import { Container, SelectAnt, UserInfo, Wrapper } from "./style";
 import { Rating } from "react-simple-star-rating";
-import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
 
-const WriteReview = ({ product }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const navigate = useNavigate();
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      comment: "",
-      rating: "",
-    },
-    enableReinitialize: true,
-    onSubmit: async (values) => {
-      const token = localStorage.getItem("access_token");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      await instance
-        .post(`/users/review/${product._id}`, { ...values }, config)
-        .then((res) => {
-          if (res) {
-            console.log(res);
-            navigate(`/products/${product._id}`);
-            handleOk();
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-  });
-
+const WriteReview = ({
+  product,
+  formik,
+  isModalOpen,
+  showModal,
+  handleOk,
+  reviewCreated,
+}) => {
   return (
     <Container>
       <div className="buttonStyle">
@@ -66,7 +28,7 @@ const WriteReview = ({ product }) => {
       <Modal
         isModalOpen={isModalOpen}
         showModal={showModal}
-        handleCancel={handleCancel}
+        handleCancel={handleOk}
         handleOk={handleOk}
       >
         <BoldText
@@ -102,6 +64,7 @@ const WriteReview = ({ product }) => {
           >
             Send
           </Button>
+          {reviewCreated}
         </form>
       </Modal>
       {product?.reviews?.map((value, idx) => (

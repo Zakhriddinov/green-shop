@@ -5,7 +5,6 @@ import Paragraph from "../../Generic/Typography/Paragraph";
 import { Content, Icon } from "./style";
 
 const ProductInfo = ({ product }) => {
-  console.log(product);
   return (
     <Content>
       <Content.Title>{product?.title}</Content.Title>

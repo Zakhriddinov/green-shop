@@ -3,11 +3,13 @@ import Navbar from "../components/Navbar";
 import Profile from "../components/Profile";
 import ProtectedRoutes from "../components/ProtectedRoutes";
 import navbar from "../utils/navbar";
+import ScrollToTop from "../utils/ScrollToTop";
 import userRoute from "../utils/user";
 
-const Root = () => { 
+const Root = () => {
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route element={<Navbar />}>
           {navbar.map(({ id, path, element, privat }) => (

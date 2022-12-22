@@ -2,23 +2,24 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import instance from "../../axios";
 
 const initialState = {
-   review: {},
+   review: [],
    loading: false,
+   status: "",
    isError: false,
    error: ""
 }
 
+const token = localStorage.getItem("access_token");
 export const createReview = createAsyncThunk(
    'review/created',
-   async (body, id, thunkAPI) => {
+   async (body, thunkAPI) => {
       try {
-         const access_token = localStorage.getItem("access_token")
          const config = {
             headers: {
-               Authorization: access_token
-            }
-         }
-         const response = await instance.post(`/users/review/${id}`, body, config)
+               Authorization: `Bearer ${token}`,
+            },
+         };
+         const response = await instance.post(`/users/review/${body.id}`, config)
          return response.data
       } catch (error) {
          const message =
@@ -39,14 +40,17 @@ const reviewSlice = createSlice({
       builder
          .addCase(createReview.pending, state => {
             state.loading = true
+            state.status = "pending"
          })
          .addCase(createReview.fulfilled, (state, { payload }) => {
             state.loading = false
             state.review = payload
+            state.status = "fulfilled"
             state.isError = false
          })
          .addCase(createReview.rejected, (state, { payload }) => {
             state.loading = false
+            state.status = "rejected"
             state.isError = true
             state.error = payload
          })
