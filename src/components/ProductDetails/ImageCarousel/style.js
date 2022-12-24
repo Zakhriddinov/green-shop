@@ -31,7 +31,7 @@ const Container = styled.div`
 `
 const ImageWrapper = styled.div``
 const Img = styled.div`
-max-width: 444px;
+max-width: 500px;
 height: 444px;
 background: #FBFBFB;
 border-radius: 6px;

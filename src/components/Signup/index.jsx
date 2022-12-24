@@ -6,7 +6,7 @@ import { registerUserThunk } from "../../redux/auth/authSlice";
 import { Button, Input } from "../Generic";
 import { Content } from "../Register/style";
 import * as Yup from "yup";
-import { message } from "antd";
+import { message, Spin } from "antd";
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -28,7 +28,7 @@ const validationSchema = Yup.object({
 });
 const Signup = ({ isSuccess }) => {
   const [messageApi, contextHolder] = message.useMessage();
-  const { status } = useSelector((state) => state.auth);
+  const { status, loading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -120,7 +120,7 @@ const Signup = ({ isSuccess }) => {
       />
       <span>{errors.changepassword}</span>
       <Button type="success" width={"%"} height={45} onClick={handleSubmit}>
-        Register
+        {loading && <Spin />} Register
       </Button>
     </Content>
   );

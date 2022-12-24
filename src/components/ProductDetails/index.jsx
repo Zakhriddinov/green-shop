@@ -8,6 +8,7 @@ import ProductInfo from "./ProductInfo";
 import DescriptionReviewTab from "./DescriptionReviewTab";
 import { useFormik } from "formik";
 import instance from "../../axios";
+import Carousel from "../Carousel";
 
 const ProductDetails = () => {
   const { product } = useSelector((state) => state.products);
@@ -76,6 +77,8 @@ const ProductDetails = () => {
         handleOk={handleOk}
         reviewCreated={reviewCreated}
       />
+
+      <Carousel />
     </Container>
   );
 };

@@ -5,7 +5,7 @@ import styled from "styled-components"
 const Container = styled.div`
 display: flex;
 margin-top: 94px;
-
+margin-bottom: 127px;
 .ant-tabs-tab-btn{
    font-family: "CeraPro-Medium",sans-serif;
    font-style: normal;

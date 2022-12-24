@@ -7,7 +7,7 @@ import { Button } from "../Generic";
 import Input from "../Generic/Input";
 import { Content } from "../Register/style";
 import * as Yup from "yup";
-import { message } from "antd";
+import { message, Spin } from "antd";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
 
 const Signin = ({ isSuccess }) => {
   const [messageApi, contextHolder] = message.useMessage();
-  const { status } = useSelector((state) => state.auth);
+  const { status, loading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -84,6 +84,7 @@ const Signin = ({ isSuccess }) => {
       <span>{errors.password && touched.password && errors.password}</span>
 
       <Button type="success" width={"%"} height={45} onClick={handleSubmit}>
+        {loading && <Spin />}
         Login
       </Button>
     </Content>

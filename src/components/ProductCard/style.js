@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Basket from '../../assets/icons/bag.svg'
 import Heart from '../../assets/icons/heart.svg'
@@ -96,7 +95,7 @@ color: var(--colorGreen);
    font-size: 15px;
 }
 `
-const Links = styled(Link)`
+const Links = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
@@ -115,6 +114,7 @@ box-shadow: 0 0 5px rgba(70, 163, 88, 0.1);
    width: 25px;
    height: 25px;
 }
+pointer-events:${({ disabled }) => disabled ? "background: red;" : null};
 `
 Links.Basket = styled(Basket)``
 Links.Heart = styled(Heart)``

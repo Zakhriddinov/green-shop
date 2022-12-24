@@ -1,10 +1,37 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import { addToCart, decreaseCart } from "../../../redux/cart/cartSlice";
 import Button from "../../Generic/Button";
 import Paragraph from "../../Generic/Typography/Paragraph";
 import { Content, Icon } from "./style";
 
 const ProductInfo = ({ product }) => {
+  const { orderItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  const handleAddToCart = (product) => {
+    const productItem = {
+      productId: product._id,
+      title: product.title,
+      price: product.price,
+      images: product.images[0].url ?? null,
+    };
+    dispatch(addToCart(productItem));
+  };
+
+  const handleDescreaseCart = (product) => {
+    const productItem = {
+      productId: product._id,
+      title: product.title,
+      price: product.price,
+      images: product.images[0].url ?? null,
+    };
+    dispatch(decreaseCart(productItem));
+  };
+  const findId = orderItems.filter((item) => item.productId == id);
   return (
     <Content>
       <Content.Title>{product?.title}</Content.Title>
@@ -29,19 +56,38 @@ const ProductInfo = ({ product }) => {
           ))}
         </div>
         <div className="size">
-          <Button type={"success"} width={33} height={38} size>
+          <Button
+            type={"success"}
+            width={33}
+            height={38}
+            size
+            onClick={() => handleDescreaseCart(product)}
+          >
             -
           </Button>
           <Paragraph type="size15" color={"var(--colorBlack)"}>
-            1
+            {findId[0]?.quantity ? findId[0]?.quantity : 0}
           </Paragraph>
-          <Button type={"success"} width={33} height={38} size>
+          <Button
+            type={"success"}
+            width={33}
+            height={38}
+            size
+            onClick={() => handleAddToCart(product)}
+            disabled={product.count === findId[0]?.quantity}
+          >
             +
           </Button>
           <Button type={"success"} width={130} height={40}>
             BUY NOW
           </Button>
-          <Button type={"outline-cart"} width={130} height={40}>
+          <Button
+            type={"outline-cart"}
+            width={130}
+            height={40}
+            onClick={() => handleAddToCart(product)}
+            disabled={findId[0]?.quantity >= 1}
+          >
             ADD TO CART
           </Button>
           <Button type={"outline-cart"} width={40} height={40}>

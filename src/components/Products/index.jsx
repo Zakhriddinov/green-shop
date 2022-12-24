@@ -13,7 +13,6 @@ import { Container, Wrap } from "./style";
 const Products = () => {
   const { category } = useSelector((state) => state.categories);
   const { products } = useSelector((state) => state.products);
-
   const { search } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,7 +29,6 @@ const Products = () => {
   const onSelect = (id) => {
     navigate(`/products/${id}`);
   };
-
   return (
     <Container>
       <Filter category={category} />

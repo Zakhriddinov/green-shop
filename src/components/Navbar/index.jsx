@@ -4,12 +4,12 @@ import {
   Main,
   Section,
   Wrapper,
-  Link,
   Basket,
   Icon,
   Mobile,
   MobileLink,
   Menu,
+  Cart,
 } from "./style";
 import logo from "../../assets/images/logo.png";
 import navbar from "../../utils/navbar";
@@ -20,13 +20,17 @@ import { Dropdown } from "antd";
 import { useState } from "react";
 import Modal from "../Register";
 import jwt_decode from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
+import BoldText from "../Generic/Typography/BoldText";
+import Paragraph from "../Generic/Typography/Paragraph";
+import { removeFromCart } from "../../redux/cart/cartSlice";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const { orderItems } = useSelector((state) => state.cart);
   const token = localStorage.getItem("access_token");
   const isAdmin = token && jwt_decode(`${token}`).isAdmin;
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -52,7 +56,7 @@ const Navbar = () => {
       navigate(`${name}`);
     }
   };
-  
+
   const menu = (
     <Menu>
       <Menu.Item data-name="profile/account-details" onClick={onClickProfile}>
@@ -76,6 +80,39 @@ const Navbar = () => {
       </Menu.Item>
     </Menu>
   );
+  const cart = (
+    <Cart>
+      {orderItems
+        ?.map((value, index) => (
+          <Cart.Wrap key={index}>
+            <img src={value.images} alt="" />
+            <BoldText
+              type={"size14"}
+              onClick={() => navigate(`products/${value.productId}`)}
+              style={{ cursor: "pointer" }}
+            >
+              {value.title} ({value.quantity})
+            </BoldText>
+            <Paragraph type={"14px"} style={{ color: "var(--colorGreen)" }}>
+              ${value.itemTotal}{" "}
+              <Icon.Close onClick={() => dispatch(removeFromCart(value))} />
+            </Paragraph>
+          </Cart.Wrap>
+        ))
+        .slice(0, 3)}
+
+      <Button
+        type={"success"}
+        onClick={() => navigate("/shopping-cart")}
+        width={200}
+        height={30}
+        style={{ borderRadius: "0", margin: "0 auto" }}
+      >
+        Go to cart
+      </Button>
+    </Cart>
+  );
+
   return (
     <Container>
       <Main>
@@ -85,12 +122,17 @@ const Navbar = () => {
           </Section>
           <Section>
             <Search icon={<Icon.Search />} />
-            <Link to="/">
+            <Dropdown
+              overlay={cart}
+              placement="topRight"
+              arrow={{ pointAtCenter: true }}
+              trigger="hover"
+            >
               <Basket>
                 <Icon.Basket />
-                <div className="count">99</div>
+                <div className="count">{orderItems.length}</div>
               </Basket>
-            </Link>
+            </Dropdown>
             <div className="avatar">
               {isAdmin === false ? (
                 <Dropdown
@@ -147,7 +189,7 @@ const Navbar = () => {
                   >
                     {basket && (
                       <Basket>
-                        <div className="count">99</div>
+                        <div className="count">{orderItems.length}</div>
                       </Basket>
                     )}
                     <Icon />

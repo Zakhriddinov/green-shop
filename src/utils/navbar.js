@@ -6,6 +6,7 @@ import HomeIcon from '../assets/icons/home.svg'
 import BagIcon from '../assets/icons/bag.svg'
 import UserIcon from '../assets/icons/user.svg'
 import FavoritesIcon from '../assets/icons/favorites.svg'
+import CartPage from '../pages/Cart';
 
 const HomePage = React.lazy(() => import("../pages/Home"));
 const ProductDetailsPage = React.lazy(() => import("../pages/ProductDetails"));
@@ -52,7 +53,7 @@ const navbar = [
    {
       id: useId,
       path: "/shopping-cart",
-      element: <Generic />,
+      element: <CartPage />,
       title: 'Basket',
       Icon: BagIcon,
       privat: false,

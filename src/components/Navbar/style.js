@@ -4,6 +4,7 @@ import Search from '../../assets/icons/search.svg';
 import Bag from '../../assets/icons/bag.svg';
 import Login from '../../assets/icons/login.svg';
 import User from '../../assets/icons/user.svg';
+import Exit from '../../assets/icons/close.svg'
 
 const Container = styled.nav`
 display: flex;
@@ -87,6 +88,7 @@ display: flex;
 align-items: center;
 position: relative;
 margin: 0px 30px;
+cursor: pointer;
 
 .count{
    position: absolute;
@@ -161,6 +163,14 @@ svg,path{
    fill: #fff;
 }
 `
+Icon.Close = styled(Exit)`
+svg,path{
+   fill: red;
+}
+cursor: pointer;
+width: 15px;
+height: 15px;
+`
 const Menu = styled.div`
 width: 177px;
 display: flex;
@@ -179,4 +189,27 @@ Menu.Item = styled.div`
   cursor: pointer;
   color: #000000;
 `
-export { Container, Main, Wrapper, Section, Link, Basket, Icon, Mobile, MobileLink, Menu };
+const Cart = styled.div`
+width: 300px;
+display: flex;
+flex-direction: column;
+background-color: #fff;
+padding: 20px;
+gap: 10px;
+box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06),
+    0px 7px 46px rgba(0, 0, 0, 0.06), 0px 8px 15px rgba(0, 0, 0, 0.06);
+`
+Cart.Wrap = styled.div`
+display: flex;
+justify-content: space-between;
+width: 260px;
+height: 50px;
+box-shadow: 0px 1px 5px var(--colorGreen);
+    border-radius: 10px;
+    padding: 5px;
+img{
+   width: 40px;
+   height: 40px;
+}
+`
+export { Container, Main, Wrapper, Section, Link, Basket, Icon, Mobile, MobileLink, Menu, Cart };

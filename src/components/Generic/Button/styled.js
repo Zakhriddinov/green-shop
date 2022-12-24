@@ -59,7 +59,18 @@ cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 height: ${({ height }) => (height ? `${height}px` : "44px")};
 width: ${getWidth};
 outline: none;
+:disabled{
+   opacity:0.5;
+}
 ${getType}
+
+.ant-spin .ant-spin-dot-item{
+   background-color:white;
+   opacity:1;
+}
+.ant-spin{
+   margin-right:10px;
+}
 `
 
 

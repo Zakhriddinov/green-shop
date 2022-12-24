@@ -58,13 +58,20 @@ const WriteReview = ({
             <SelectAnt.Option value="2">2 (bad)</SelectAnt.Option>
             <SelectAnt.Option value="1">1 (awful)</SelectAnt.Option>
           </SelectAnt>
+          <span
+            style={{
+              color: "red",
+              fontFamily: "CeraPro-Medium,sans-serif",
+            }}
+          >
+            {reviewCreated}
+          </span>
           <Button
             type={"success"}
             style={{ borderRadius: "0px", marginTop: "20px" }}
           >
             Send
           </Button>
-          {reviewCreated}
         </form>
       </Modal>
       {product?.reviews?.map((value, idx) => (

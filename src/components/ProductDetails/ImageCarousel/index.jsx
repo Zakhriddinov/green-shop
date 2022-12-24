@@ -1,6 +1,5 @@
 import { Container, Img, ImageWrapper } from "./style";
 import { Carousel } from "react-responsive-carousel";
-
 const ImageCarousel = ({ images }) => {
   return (
     <Container>
@@ -9,11 +8,11 @@ const ImageCarousel = ({ images }) => {
           showArrows={false}
           showStatus={false}
           showIndicators={false}
-          axis="vertical"
+          axis="horizontal"
         >
           {images?.map((value, id) => (
             <Img key={id}>
-              <img alt="image" src={value.url} />
+              <img alt="image" src={value?.url} />
             </Img>
           ))}
         </Carousel>
