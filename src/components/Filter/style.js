@@ -1,5 +1,5 @@
 import { Slider } from 'antd';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -44,13 +44,15 @@ line-height: 16px;
 color: var(--colorBlack);
 margin-top: ${({ top }) => top && "35px"};
 `
-Content.Item = styled(Link)`
+Content.Item = styled.div`
 display: flex;
 justify-content: space-between;
 text-decoration: none;
+cursor: pointer;
 &:hover p{
    color: var(--colorGreen);
 }
+
 `
 const SliderAnt = styled(Slider)`
 .ant-slider-track{

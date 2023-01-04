@@ -4,9 +4,9 @@ import { SelectAnt } from "./style";
 const style = {
   fontFamily: "CeraPro-Regular",
 };
-const Select = () => {
+const Select = ({ defaultValue, onChange }) => {
   return (
-    <SelectAnt defaultValue={"Default sorting"} bordered={false}>
+    <SelectAnt defaultValue={defaultValue} bordered={false} onChange={onChange}>
       <SelectAnt.Option style={style}>Default sorting</SelectAnt.Option>
       <SelectAnt.Option style={style} value="price_1">
         Price: Low To High

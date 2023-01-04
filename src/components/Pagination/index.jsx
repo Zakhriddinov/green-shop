@@ -1,9 +1,13 @@
 import { Container, PaginationAnt } from "./style";
 
-const Pagination = () => {
+const Pagination = ({ data }) => {
   return (
     <Container>
-      <PaginationAnt total={100} defaultPageSize={22}/>
+      <PaginationAnt
+        total={
+          Number(data?.products?.length) * Number(data?.paginationLinksNumber)
+        }
+      />
     </Container>
   );
 };

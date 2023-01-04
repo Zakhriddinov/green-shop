@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { uzeReplace } from "../../hooks/useReplace";
+import useSearch from "../../hooks/useSearch";
 import { getCategory } from "../../redux/category/categorySlice";
 import { fetchProducts } from "../../redux/product/productSlice";
 import Filter from "../Filter";
@@ -16,6 +18,8 @@ const Products = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const query = useSearch();
+  const [value, setValue] = useState(30);
 
   useEffect(() => {
     dispatch(getCategory());
@@ -29,16 +33,37 @@ const Products = () => {
   const onSelect = (id) => {
     navigate(`/products/${id}`);
   };
+
+  const onChangeSort = (sort) => {
+    navigate(`/home${uzeReplace("sort", sort)}`);
+  };
+  const onClickCategory = (category_name) => {
+    console.log(category_name);
+    navigate(`/home${uzeReplace("category", category_name)}`);
+  };
+  const rangeSelector = (event) => {
+    setValue(event);
+    navigate(`/home${uzeReplace("priceTo", event)}`);
+  };
   return (
     <Container>
-      <Filter category={category} />
+      <Filter
+        category={category}
+        onClickCategory={onClickCategory}
+        rangeSelector={rangeSelector}
+        value={value}
+        query={query}
+      />
       <Wrap>
         <div className="sort">
           <Button type="category" width={30} height={30}>
             <Wrap.Icon />
           </Button>
           <span className="span">Sort by:</span>
-          <Select />
+          <Select
+            onChange={onChangeSort}
+            defaultValue={query.get("sort") || "Default sorting"}
+          />
         </div>
 
         <div className="wrapper">
@@ -51,7 +76,7 @@ const Products = () => {
             />
           ))}
         </div>
-        <Pagination />
+        <Pagination data={products} />
       </Wrap>
     </Container>
   );

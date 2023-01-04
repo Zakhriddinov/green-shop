@@ -2,14 +2,24 @@ import { Advertising, Container, Content, SliderAnt } from "./style";
 import { Button } from "../Generic";
 import img from "../../assets/images/img.png";
 import supers from "../../assets/images/supers.png";
-const Filter = ({ category = {} }) => {
+
+const Filter = ({
+  category = {},
+  onClickCategory,
+  rangeSelector,
+  value,
+  query,
+}) => {
   return (
     <Container>
       <Content>
         <Content.Title>Categories</Content.Title>
         <Content.List>
           {category?.map((value) => (
-            <Content.Item key={value._id}>
+            <Content.Item
+              key={value._id}
+              onClick={() => onClickCategory(value?.name)}
+            >
               <p>{value.name}</p>
               <p>(33)</p>
             </Content.Item>
@@ -17,11 +27,21 @@ const Filter = ({ category = {} }) => {
         </Content.List>
         <Content.Title top>Price Range</Content.Title>
         <Content.List>
-          <SliderAnt range defaultValue={[0, 1230]} />
+          <SliderAnt
+            defaultValue={30}
+            onChange={rangeSelector}
+            max={1600}
+            value={query.get("priceTo") || 30}
+          />
           <p>
-            Price: <span>$39 - $1200</span>
+            Price: <span>${value}</span>
           </p>
-          <Button type="success" width={90} height={35}>
+          <Button
+            type="success"
+            width={90}
+            height={35}
+            style={{ display: "none" }}
+          >
             Filter
           </Button>
         </Content.List>
