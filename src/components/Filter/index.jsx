@@ -21,7 +21,6 @@ const Filter = ({
               onClick={() => onClickCategory(value?.name)}
             >
               <p>{value.name}</p>
-              <p>(33)</p>
             </Content.Item>
           ))}
         </Content.List>
@@ -47,10 +46,9 @@ const Filter = ({
         </Content.List>
         <Content.Title top>Size</Content.Title>
         <Content.List>
-          {Array.from({ length: 3 }).map((_, idx) => (
+          {Array.from([{ name: "Small" }, { name: "Medium" },{name:"Large"}]).map((item, idx) => (
             <Content.Item key={idx}>
-              <p>Small</p>
-              <p>(33)</p>
+              <p>{item.name}</p>
             </Content.Item>
           ))}
         </Content.List>

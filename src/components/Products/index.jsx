@@ -45,6 +45,9 @@ const Products = () => {
     setValue(event);
     navigate(`/home${uzeReplace("priceTo", event)}`);
   };
+  const onChange = (pageNum) => {
+    navigate(`/home${uzeReplace("pageNum", pageNum)}`);
+  };
   return (
     <Container>
       <Filter
@@ -53,6 +56,7 @@ const Products = () => {
         rangeSelector={rangeSelector}
         value={value}
         query={query}
+        data={products?.products}
       />
       <Wrap>
         <div className="sort">
@@ -76,7 +80,7 @@ const Products = () => {
             />
           ))}
         </div>
-        <Pagination data={products} />
+        <Pagination data={products} onChange={onChange} />
       </Wrap>
     </Container>
   );

@@ -1,12 +1,12 @@
 import { Container, PaginationAnt } from "./style";
 
-const Pagination = ({ data }) => {
+const Pagination = ({ data, onChange }) => {
   return (
     <Container>
       <PaginationAnt
-        total={
-          Number(data?.products?.length) * Number(data?.paginationLinksNumber)
-        }
+        total={data?.dataLength + 2}
+        onChange={onChange}
+        current={data?.pageNum}
       />
     </Container>
   );
