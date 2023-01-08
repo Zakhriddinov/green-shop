@@ -9,7 +9,9 @@ max-height: 450px;
 height: 100%;
 margin-top: 12px;
 margin-bottom: 46px;
-
+.slick-dots li button:before {
+   display: none;
+}
 .slick-dots li button{
    background: green;
    width: 8px;

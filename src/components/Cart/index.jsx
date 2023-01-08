@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTotal } from "../../redux/cart/cartSlice";
+import Carousel from "../Carousel";
 import FavouritesTable from "../Generic/FavouritesTable";
 import { Container, Wrapper } from "./style";
 import PaymentCart from "./TotalContent";
@@ -22,6 +23,7 @@ const Cart = () => {
         <FavouritesTable product={orderItems} />
         <PaymentCart />
       </Wrapper>
+      <Carousel text="You may be interested in"/>
     </Container>
   );
 };

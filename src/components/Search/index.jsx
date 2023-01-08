@@ -12,6 +12,7 @@ const Search = ({ icon }) => {
   const navigate = useNavigate();
   const query = useSearch();
   const searchRef = useRef();
+  
   useEffect(() => {}, [location?.search]);
 
   const onChange = ({ target: { name, value } }) => {

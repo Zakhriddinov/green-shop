@@ -78,7 +78,7 @@ const ProductDetails = () => {
         reviewCreated={reviewCreated}
       />
 
-      <Carousel />
+      <Carousel text="Releted Products" />
     </Container>
   );
 };

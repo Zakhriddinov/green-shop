@@ -62,9 +62,9 @@ const Navbar = () => {
       <Menu.Item data-name="profile/account-details" onClick={onClickProfile}>
         My Profile
       </Menu.Item>
-      <Menu.Item data-name="favorites" onClick={onClickProfile}>
+      {/* <Menu.Item data-name="favorites" onClick={onClickProfile}>
         Favourites
-      </Menu.Item>
+      </Menu.Item> */}
       <Menu.Item data-name="logout" onClick={onClickProfile}>
         Log out
       </Menu.Item>

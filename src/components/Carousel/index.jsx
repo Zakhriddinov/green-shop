@@ -6,7 +6,6 @@ import ProductCard from "../ProductCard";
 import "slick-carousel/slick/slick.css";
 import BoldText from "../Generic/Typography/BoldText";
 import { Header } from "./style";
-// import "slick-carousel/slick/slick-theme.css";
 
 var settings = {
   dots: true,
@@ -42,7 +41,7 @@ var settings = {
     },
   ],
 };
-const Carousel = () => {
+const Carousel = ({ text }) => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const onSelect = (id) => {
@@ -61,7 +60,7 @@ const Carousel = () => {
     <>
       <Header>
         <BoldText type="size18" style={{ color: "var(--colorGreen)" }}>
-          Releted Products
+          {text}
         </BoldText>
         <div className="line"></div>
       </Header>

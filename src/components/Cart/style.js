@@ -9,8 +9,9 @@ margin-top: 51px;
 const Wrapper = styled.div`
 display: flex;
 justify-content: space-between;
-position: sticky;
+/* position: sticky; */
 top: 0;
+margin-bottom: 87px;
 `
 
 export { Container, Wrapper }

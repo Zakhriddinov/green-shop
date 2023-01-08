@@ -15,7 +15,7 @@ background-color: #fbfbfb;
 height: 610px;
 max-width: 1200px;
 width: 100%;
-margin: 0 auto;
+margin: 100px auto 0 auto;
 
 @media screen and (max-width:768px) {
    height: 100%;   
