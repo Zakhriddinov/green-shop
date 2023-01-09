@@ -15,15 +15,13 @@ const Cart = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(totalPrice);
-
   return (
     <Container>
       <Wrapper>
         <FavouritesTable product={orderItems} />
-        <PaymentCart />
+        <PaymentCart totalPrice={totalPrice} />
       </Wrapper>
-      <Carousel text="You may be interested in"/>
+      <Carousel text="You may be interested in" />
     </Container>
   );
 };

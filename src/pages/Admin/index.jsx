@@ -1,5 +1,5 @@
-const AdminPanel = () => {
-  return <div>Admin</div>;
-};
+import Admin from "../../components/Admin";
+
+const AdminPanel = () => <Admin />;
 
 export default AdminPanel;

@@ -4,7 +4,7 @@ import BoldText from "../../Generic/Typography/BoldText";
 import Paragraph from "../../Generic/Typography/Paragraph";
 import { Links, TotalContent } from "./style";
 
-const PaymentCart = () => {
+const PaymentCart = ({ totalPrice = 0 }) => {
   return (
     <TotalContent>
       <BoldText type={"size18"}>Cart Totals</BoldText>
@@ -13,7 +13,7 @@ const PaymentCart = () => {
         <Paragraph type={"size15"} color="var(--colorBlack)">
           Subtotal
         </Paragraph>
-        <BoldText type={"size16"}>$ 1254</BoldText>
+        <BoldText type={"size16"}>$ {totalPrice}</BoldText>
       </div>
       <div className="wrap">
         <Paragraph type={"size15"} color="var(--colorBlack)">
@@ -24,7 +24,7 @@ const PaymentCart = () => {
       <div className="wrap">
         <BoldText type={"size16"}>Total</BoldText>
         <BoldText type={"size16"} style={{ color: "var(--colorGreen)" }}>
-          $ 2.66258
+          $ {totalPrice + 16}
         </BoldText>
       </div>
       <Button

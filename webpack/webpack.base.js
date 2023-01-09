@@ -6,6 +6,7 @@ const SimpleWebpackProgress = require("simple-progress-webpack-plugin");
 const CircularWebpackDependencies = require("circular-dependency-plugin");
 const StylelintWebpackPlugin = require("stylelint-webpack-plugin");
 const Dotenv = require('dotenv-webpack');
+const { NetlifyPlugin } = require('netlify-webpack-plugin');
 
 const entry = ['./src/index.js']
 
@@ -111,7 +112,16 @@ const plugins = [
    new StylelintWebpackPlugin({
       files: '**/*.js'
    }),
-   new Dotenv()
+   new Dotenv(),
+   new NetlifyPlugin({
+      redirects: [
+         {
+            from: "/*",
+            to: "/index.html",
+            status: 200
+         }
+      ]
+   })
 ]
 
 const config = {

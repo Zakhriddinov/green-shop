@@ -11,6 +11,7 @@ import CartPage from '../pages/Cart';
 const HomePage = React.lazy(() => import("../pages/Home"));
 const ProductDetailsPage = React.lazy(() => import("../pages/ProductDetails"));
 const ProfilePage = React.lazy(() => import("../pages/Profile"));
+// const AdminPage = React.lazy(() => import("../pages/Admin"));
 
 const navbar = [
    {
