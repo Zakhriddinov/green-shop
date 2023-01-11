@@ -5,6 +5,7 @@ const Container = styled.div`
 max-width: 280px;
 width: 100%;
 max-height: 431px;
+height: 100%;
 background: #FBFBFB;
 padding: 30px 0px;
 `

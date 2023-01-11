@@ -72,7 +72,7 @@ const Navbar = () => {
   );
   const admin = (
     <Menu>
-      <Menu.Item data-name="profile/account-details" onClick={onClickProfile}>
+      <Menu.Item data-name="admin/users" onClick={onClickProfile}>
         Admin Dashboard
       </Menu.Item>
       <Menu.Item data-name="logout" onClick={onClickProfile}>
@@ -112,7 +112,6 @@ const Navbar = () => {
       </Button>
     </Cart>
   );
-
   return (
     <Container>
       <Main>
@@ -203,7 +202,10 @@ const Navbar = () => {
       </Main>
       <div className="menu_line"></div>
       <Outlet />
-      {pathname.substring(0, 8) === "/profile" ? null : <Footer />}
+      {pathname.substring(0, 8) === "/profile" ||
+      pathname.substring(0, 6) === "/admin" ? null : (
+        <Footer />
+      )}
     </Container>
   );
 };

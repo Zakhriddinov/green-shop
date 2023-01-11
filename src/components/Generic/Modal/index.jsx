@@ -5,7 +5,6 @@ const Modal = ({
   isModalOpen,
   handleOk,
   handleCancel,
-  setIsModalOpen,
 }) => {
   return (
     <Container open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
