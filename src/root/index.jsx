@@ -7,6 +7,7 @@ import navbar from "../utils/navbar";
 import ScrollToTop from "../utils/ScrollToTop";
 import userRoute from "../utils/user";
 import adminData from "../utils/admin";
+import CreateProducts from "../components/CreateProduct";
 
 const Root = () => {
   return (
@@ -30,6 +31,7 @@ const Root = () => {
                 <Route path={path} key={id} element={element} />
               ))}
             </Route>
+            <Route path="/admin/addproduct" element={<CreateProducts />} />
           </Route>
         </Route>
 

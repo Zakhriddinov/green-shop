@@ -3,6 +3,7 @@ import Generic from '../pages/Generic';
 import UserIcon from '../assets/icons/userIcon.svg'
 import ReportIcon from '../assets/icons/report.svg'
 import AdminUserListPage from '../pages/Admin/AdminUserList';
+import AdminProductList from '../components/Admin/ProductList';
 
 const admin = [
    {
@@ -17,7 +18,7 @@ const admin = [
    {
       id: useId,
       path: "/admin/products",
-      element: <Generic />,
+      element: <AdminProductList />,
       title: "Products",
       Icon: ReportIcon,
       hidden: false,
@@ -40,6 +41,6 @@ const admin = [
       Icon: ReportIcon,
       hidden: false,
       privat: true
-   }
+   },
 ]
 export default admin
