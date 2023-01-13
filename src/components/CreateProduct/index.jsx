@@ -3,9 +3,45 @@ import { Button, Input } from "../Generic";
 import BoldText from "../Generic/Typography/BoldText";
 import Textarea from "../Generic/Textarea";
 import { Container } from "./style";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object({
+  title: Yup.string()
+    .required("Title is a required field")
+    .min(6, "Title must be at least 6 characters"),
+  description: Yup.string()
+    .required("Description is a required field")
+    .min(15, "Description must be at least 15 characters"),
+  price: Yup.number()
+    .required("Price is a required field")
+    .min(3, "Price must be at least 3 characters"),
+  count: Yup.number().required("Price is a required field"),
+  category: Yup.string().required("Category is a required field"),
+  tags: Yup.array(),
+  size: Yup.array(),
+});
 
 const CreateProducts = () => {
   const navigate = useNavigate();
+
+  const { handleSubmit, handleChange, values, errors, handleBlur, touched } =
+    useFormik({
+      initialValues: {
+        title: "",
+        description: "",
+        price: 0,
+        count: 0,
+        category: "",
+        tags: [],
+        size: [],
+        images: [],
+      },
+      validationSchema,
+      onSubmit(values) {
+        console.log(values);
+      },
+    });
   return (
     <Container>
       <div className="flex">
@@ -24,7 +60,10 @@ const CreateProducts = () => {
         width={500}
         height={40}
         type="text"
-        name="firstName"
+        name="title"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        values={values.email}
       />
       <Textarea />
       <Input
@@ -41,7 +80,9 @@ const CreateProducts = () => {
         type="number"
         name="price"
       />
-      <Button type={"success"} width={100} height={40}>Create</Button>
+      <Button type={"success"} width={100} height={40} onClick={handleSubmit}>
+        Create
+      </Button>
     </Container>
   );
 };

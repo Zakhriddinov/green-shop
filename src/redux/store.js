@@ -6,6 +6,7 @@ import productReducer from './product/productSlice';
 import reviewReducer from './writeReview/writeSlice';
 import adminUserReducer from './admin/adminUserSlice';
 import adminProductReducer from './admin/adminProductSlice';
+import adminOrdersReducer from './admin/adminOrdersSlice';
 
 export default configureStore({
    reducer: {
@@ -15,6 +16,7 @@ export default configureStore({
       review: reviewReducer,
       cart: cartReducer,
       adminUser: adminUserReducer,
-      adminProducts: adminProductReducer
+      adminProducts: adminProductReducer,
+      adminOrders: adminOrdersReducer
    }
 })

@@ -1,10 +1,7 @@
 import { Space } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteUser,
-  fetchUsers,
-} from "../../../redux/admin/adminUserSlice";
+import { deleteUser, fetchUsers } from "../../../redux/admin/adminUserSlice";
 import Table from "../../Generic/Table";
 import BoldText from "../../Generic/Typography/BoldText";
 import { Container } from "./style";
@@ -20,6 +17,7 @@ import UserModal from "./UserModal";
 const AdminUserList = () => {
   const { userData, loading } = useSelector((state) => state.adminUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [id, setId] = useState(null);
   const dispatch = useDispatch();
 
   const showModal = () => {
@@ -36,6 +34,10 @@ const AdminUserList = () => {
     dispatch(fetchUsers());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  function dataButton(data) {
+    showModal();
+    setId(data);
+  }
   const columns = [
     {
       title: "FirstName",
@@ -65,11 +67,7 @@ const AdminUserList = () => {
       width: 50,
       render: (data) => (
         <Space size={"middle"}>
-          <a
-            onClick={() => {
-              showModal();
-            }}
-          >
+          <a onClick={() => dataButton(data._id)}>
             <AiOutlineEdit style={{ color: "primary" }} />
           </a>
           <a onClick={() => dispatch(deleteUser(data._id))}>
@@ -79,6 +77,7 @@ const AdminUserList = () => {
       ),
     },
   ];
+
   if (loading) {
     return <h2>loading...</h2>;
   }
@@ -90,6 +89,7 @@ const AdminUserList = () => {
         handleOk={handleOk}
         handleCancel={handleCancel}
         setIsModalOpen={setIsModalOpen}
+        id={id}
       />
       <Table columns={columns} data={userData} />
     </Container>

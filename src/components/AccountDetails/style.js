@@ -15,6 +15,11 @@ span{
    display: flex;
    flex-direction: column;
 }
+.flex{
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+}
 `
 const MenuWrapper = styled.div``
 const Label = styled.label``

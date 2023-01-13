@@ -68,7 +68,7 @@ const Signin = ({ isSuccess }) => {
         name="email"
         onChange={handleChange}
         onBlur={handleBlur}
-        values={values.emailz}
+        values={values.email}
       />
       <span>{errors.email && touched.email && errors.email}</span>
       <Input

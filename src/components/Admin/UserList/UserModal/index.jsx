@@ -6,6 +6,8 @@ import { Container } from "../style";
 import { Wrapper } from "./style";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { editUser } from "../../../../redux/admin/adminUserSlice";
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -21,9 +23,9 @@ const UserModal = ({
   handleOk,
   handleCancel,
   setIsModalOpen,
+  id,
 }) => {
   const isSuccess = () => setIsModalOpen(false);
-
   const { handleSubmit, handleChange, values, errors, handleBlur, touched } =
     useFormik({
       initialValues: {

@@ -4,6 +4,7 @@ import UserIcon from '../assets/icons/userIcon.svg'
 import ReportIcon from '../assets/icons/report.svg'
 import AdminUserListPage from '../pages/Admin/AdminUserList';
 import AdminProductList from '../components/Admin/ProductList';
+import OrdersList from '../components/Admin/OrdersList';
 
 const admin = [
    {
@@ -27,7 +28,7 @@ const admin = [
    {
       id: useId,
       path: "/admin/orders",
-      element: <Generic />,
+      element: <OrdersList />,
       title: "Orders",
       Icon: ReportIcon,
       hidden: false,

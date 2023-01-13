@@ -27,6 +27,23 @@ export const fetchProducts = createAsyncThunk(
       }
    }
 )
+export const createProduct = createAsyncThunk(
+   'product/create',
+   async (body) => {
+      try {
+         const config = {
+            headers: {
+               Authorization: `Bearer ${token}`,
+            },
+         };
+         const response = await instance.post(`/products/admin`, body, config)
+         return response.data
+      } catch (error) {
+         console.log(error);
+      }
+   }
+)
+
 
 export const deleteProducts = createAsyncThunk(
    'product/delete',
@@ -51,6 +68,7 @@ const productSlice = createSlice({
    reducers: {},
    extraReducers: builder => {
       builder
+         // fetch products
          .addCase(fetchProducts.pending, state => {
             state.loading = true
          })
@@ -64,6 +82,20 @@ const productSlice = createSlice({
             state.isError = true
             state.error = payload
          })
+         // create product
+         .addCase(createProduct.pending, state => {
+            state.loading = true
+         })
+         .addCase(createProduct.fulfilled, (state) => {
+            state.loading = false
+            state.isError = false
+         })
+         .addCase(createProduct.rejected, (state, { payload }) => {
+            state.loading = false
+            state.isError = true
+            state.error = payload
+         })
+         // delete product
          .addCase(deleteProducts.pending, state => {
             state.loading = true
          })

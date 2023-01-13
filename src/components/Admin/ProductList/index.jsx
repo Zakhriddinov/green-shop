@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Table from "../../Generic/Table";
 import BoldText from "../../Generic/Typography/BoldText";
 import { Container } from "./style";
-import { AiOutlineEdit, AiOutlineUserDelete } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { BiAddToQueue } from "react-icons/bi";
 import {
   deleteProducts,
@@ -49,7 +49,7 @@ const AdminProductList = () => {
             <AiOutlineEdit style={{ color: "primary" }} />
           </a>
           <a onClick={() => dispatch(deleteProducts(data._id))}>
-            <AiOutlineUserDelete style={{ color: "red" }} />
+            <AiOutlineDelete style={{ color: "red" }} />
           </a>
         </Space>
       ),

@@ -46,14 +46,14 @@ export const deleteUser = createAsyncThunk(
 )
 export const editUser = createAsyncThunk(
    'user/edit',
-   async (id) => {
+   async (id, body) => {
       try {
          const config = {
             headers: {
                Authorization: `Bearer ${token}`,
             },
          };
-         const response = await instance.put(`/users/admin/${id}`, config)
+         const response = await instance.put(`/users/admin/${id}`, body, config)
          return response.data
       } catch (error) {
          console.log(error);
@@ -94,9 +94,8 @@ const userSlice = createSlice({
          .addCase(editUser.pending, state => {
             state.loading = true
          })
-         .addCase(editUser.fulfilled, (state, { payload }) => {
+         .addCase(editUser.fulfilled, (state) => {
             state.loading = false
-            state.user = payload
             state.isError = false
          })
          .addCase(editUser.rejected, (state, { payload }) => {
