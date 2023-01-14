@@ -5,6 +5,9 @@ import Textarea from "../Generic/Textarea";
 import { Container } from "./style";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { createProduct } from "../../redux/admin/adminProductSlice";
+import Paragraph from "antd/es/skeleton/Paragraph";
 
 const validationSchema = Yup.object({
   title: Yup.string()
@@ -24,6 +27,7 @@ const validationSchema = Yup.object({
 
 const CreateProducts = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { handleSubmit, handleChange, values, errors, handleBlur, touched } =
     useFormik({

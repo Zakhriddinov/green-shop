@@ -3,9 +3,9 @@ import useId from '../hooks/useId';
 import Generic from '../pages/Generic';
 import UserIcon from '../assets/icons/userIcon.svg'
 import Heart from '../assets/icons/userHeart.svg'
-import Location from '../assets/icons/location.svg'
 import Orders from '../assets/icons/cart.svg'
 import AccountDetailsPage from '../pages/AccountDetails';
+import ProfileOrders from '../components/Profile/ProfileOrders';
 
 const userRoute = [
    {
@@ -19,17 +19,8 @@ const userRoute = [
    },
    {
       id: useId,
-      path: "/profile/address",
-      element: <Generic />,
-      title: 'Address',
-      Icon: Location,
-      privat: true,
-      hidden: false,
-   },
-   {
-      id: useId,
       path: "/profile/orders",
-      element: <Generic />,
+      element: <ProfileOrders />,
       title: 'Orders',
       Icon: Orders,
       privat: true,

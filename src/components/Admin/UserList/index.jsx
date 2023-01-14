@@ -12,6 +12,7 @@ import {
   AiOutlineUserDelete,
 } from "react-icons/ai";
 import UserModal from "./UserModal";
+import Spinner from "../../Spinner";
 // import { Link } from "react-router-dom";
 
 const AdminUserList = () => {
@@ -78,8 +79,8 @@ const AdminUserList = () => {
     },
   ];
 
-  if (loading) {
-    return <h2>loading...</h2>;
+  if (!loading) {
+    return <Spinner />;
   }
   return (
     <Container>
