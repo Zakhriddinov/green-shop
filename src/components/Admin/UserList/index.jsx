@@ -79,7 +79,7 @@ const AdminUserList = () => {
     },
   ];
 
-  if (!loading) {
+  if (loading) {
     return <Spinner />;
   }
   return (

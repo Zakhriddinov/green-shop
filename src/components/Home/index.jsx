@@ -1,6 +1,6 @@
 import React from "react";
 import Carusel from "../Carusel";
-import Posts from "../Posts";
+// import Posts from "../Posts";
 import Products from "../Products";
 import { Container } from "./style";
 
@@ -9,7 +9,7 @@ const Home = () => {
     <Container>
       <Carusel />
       <Products />
-      <Posts />
+      {/* <Posts /> */}
     </Container>
   );
 };
